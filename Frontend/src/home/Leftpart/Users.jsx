@@ -8,7 +8,7 @@ const Users = () => {
         Messages
       </h1>
 
-      <div className="my-2 flex-1 overflow-y-auto" style={{maxHeight:"calc(80vh - 10vh) "}}>
+      <div className="my-2 no-scrollbar overflow-y-auto" style={{maxHeight:"calc(80vh - 10vh) "}}>
         <User/>
         <User/>
         <User/>

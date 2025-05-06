@@ -3,7 +3,7 @@ import Message from "./Message";
 
 const Messages = () => {
   return (
-    <div className=" overflow-y-auto" style={{minHeight:"calc(92vh - 8vh)"}}>
+    <div className="no-scrollbar overflow-y-auto" style={{minHeight:"calc(92vh - 8vh)"}}>
       <Message/>
       <Message/>
       <Message/>
