@@ -8,7 +8,14 @@ import userRoute from "./routes/user.route.js";
 const app = express()
 app.use(express.json())
 app.use(cookieParser());
-app.use(cors());
+
+// CORS configuration
+app.use(cors({
+    origin: "http://localhost:5173", // Your frontend URL
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 dotenv.config()
 const PORT = process.env.PORT || 3001
@@ -17,13 +24,11 @@ const MONGODB_URI = process.env.MONGODB_URI;
 try {
     mongoose.connect(MONGODB_URI)
     console.log("MONGODB CONNECTED")
-   }catch(error){
-console.log(error)
+} catch(error) {
+    console.log(error)
 }
 
-
 app.use("/user", userRoute)
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

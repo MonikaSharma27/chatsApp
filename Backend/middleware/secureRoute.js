@@ -4,13 +4,13 @@ import User from "../models/user.js";
 
 const secureRoute = async (req, res, next) => {
     try{
-const token = req.cookies.jwt;
+        const token = req.cookies.jwt;
         if(!token){
             return res.status(401).json({error: "Unauthorized"});
         }
-        const decoded = jwt.verify(token, process.env.JWT_token);
+        const decoded = jwt.verify(token, process.env.JWT_TOKEN);
         if(!decoded){
-            return res.status(401).json({error: "Imvalid token"});
+            return res.status(401).json({error: "Invalid token"});
         }
         const user = await User.findById(decoded.userId).select("-password");
         if(!user){

@@ -22,6 +22,7 @@ const Login = () => {
             email:data.email,
             password:data.password
         }
+        console.log(userInfo,"userInfo")
       await axiosInstance.post("/user/login" , userInfo)
         .then((response)=>{
             console.log(response.data)
