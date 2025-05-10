@@ -9,6 +9,7 @@ res.cookie("jwt", token, {
     secure : true,
     sameSite:"none"
 })
+return token;
 }
 
 export default createTokenAndSaveCookie;
