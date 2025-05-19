@@ -12,20 +12,12 @@ const Users = () => {
       </h1>
 
       <div className="my-2 no-scrollbar overflow-y-auto" style={{maxHeight:"calc(80vh - 10vh) "}}>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
+        {allUsers.map((user, index) =>(
+          <User
+            key={index}
+            user={user}
+          />
+        ))}
       </div>
     </div>
   );

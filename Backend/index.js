@@ -4,6 +4,8 @@ import mongoose  from "mongoose";
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js";
+import messageRoute from "./routes/message.route.js";
+
 
 const app = express()
 app.use(express.json())
@@ -29,6 +31,7 @@ try {
 }
 
 app.use("/user", userRoute)
+app.use("/message", messageRoute)
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

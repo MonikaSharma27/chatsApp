@@ -1,18 +1,38 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Message from "./Message";
+import useGetMessage from "../../context/useGetMessage.js";
+import Loading from "../../components/Loading.jsx";
+import { set } from "react-hook-form";
 
 const Messages = () => {
+  const {loading, messages}=useGetMessage();
+  console.log(messages);
+
+  const lastMsgRef = useRef();
+useEffect(()=>{
+  setTimeout(() => {
+    lastMsgRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, 100);
+},[messages])
+
+
+
   return (
     <div className="no-scrollbar overflow-y-auto" style={{minHeight:"calc(92vh - 8vh)"}}>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
+
+      {loading?(<Loading/>):(messages.length>0 && messages.map((message)=>(
+        <Message key = {message._id} message={message}/>
+      )))}
+
+
+
+
+      {!loading && messages.length === 0 && (
+        <div>
+          <p className="text-center mt-[20%]">Say! Hi to start the conversation</p>
+        </div>
+
+      )}
       
     </div>
   );

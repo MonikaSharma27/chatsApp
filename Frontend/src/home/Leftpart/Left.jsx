@@ -7,7 +7,9 @@ function Left() {
   return (
     <div className='w-[30%] bg-black text-gray-300'>
     <Search/>
-    <Users/>
+    <div  style={{minHeight:"calc(80vh - 10vh) "}}>
+       <Users/>
+      </div>
     <Logout/>
     </div>
   )
