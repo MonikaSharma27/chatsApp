@@ -5,9 +5,9 @@ import Logout from './Logout'
 
 function Left() {
   return (
-    <div className='w-[30%] bg-black text-gray-300'>
+    <div className='w-full bg-black text-gray-300'>
     <Search/>
-    <div  style={{minHeight:"calc(80vh - 10vh) "}}>
+    <div  style={{minHeight:"calc(91vh - 10vh) "}}>
        <Users/>
       </div>
     <Logout/>

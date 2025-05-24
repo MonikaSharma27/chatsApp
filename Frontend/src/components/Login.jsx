@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import axiosInstance from '../../axios';
 import { useAuth } from '../context/Authprovider';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Login = () => {
 
@@ -27,14 +28,14 @@ const Login = () => {
         .then((response)=>{
             console.log(response.data)
             if(response.data){
-                alert("Login successfully")
+                toast.success("Login successfully")
             }
             localStorage.setItem("ChatAPP",JSON.stringify(response.data))
             setAuthUser(response.data);
         })
         .catch((error)=>{
             if(error.response){
-                alert("Error:"+error.response.data.error);
+                toast.error("Error:"+error.response.data.error);
             }
             console.log(error);
         })
@@ -60,7 +61,6 @@ const Login = () => {
                    <input
                      type="email"
                      name=""
-                     id=""
                      placeholder="Email"
                      className="outline-none p-1 w-full"
                      {...register("email", { required: true })}
@@ -79,7 +79,6 @@ const Login = () => {
                    <input
                      type="password"
                      name=""
-                     id=""
                      placeholder="Password"
                      className="outline-none p-1 w-full"
                      {...register("password", { required: true })}

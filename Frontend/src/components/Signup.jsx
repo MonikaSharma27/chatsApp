@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import axiosInstance from "../../axios";
 import { useAuth } from "../context/Authprovider";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 
@@ -38,14 +39,14 @@ return value === password || "Password do not match"
     .then((response)=>{
         console.log(response.data)
         if(response.data){
-            alert("signup successfully")
+            toast.success("signup successfully")
         }
         localStorage.setItem("ChatAPP",JSON.stringify(response.data))
         setAuthUser(response.data);
     })
     .catch((error)=>{
         if(error.response){
-            alert("Error:"+error.response.data.error);
+            toast.error("Error:"+error.response.data.error);
         }
         console.log(error);
     })
@@ -70,7 +71,6 @@ return value === password || "Password do not match"
                 <input
                   type="text"
                   name=""
-                  id=""
                   placeholder="Fullname"
                   className="outline-none p-1 w-full "
                   {...register("fullname", { required: true })}
@@ -89,7 +89,6 @@ return value === password || "Password do not match"
                 <input
                   type="email"
                   name=""
-                  id=""
                   placeholder="Email"
                   className="outline-none p-1 w-full"
                   {...register("email", { required: true })}
@@ -108,7 +107,6 @@ return value === password || "Password do not match"
                 <input
                   type="password"
                   name=""
-                  id=""
                   placeholder="Password"
                   className="outline-none p-1 w-full"
                   {...register("password", { required: true })}
@@ -127,7 +125,6 @@ return value === password || "Password do not match"
                 <input
                   type="password"
                   name=""
-                  id=""
                   placeholder="Confirm Password"
                   className="outline-none p-1 w-full "
                   {...register("confirmPassword", { required: true , validate: validatePasswordMatch })}

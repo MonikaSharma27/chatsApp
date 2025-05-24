@@ -2,16 +2,19 @@ import React, { useEffect, useRef } from "react";
 import Message from "./Message";
 import useGetMessage from "../../context/useGetMessage.js";
 import Loading from "../../components/Loading.jsx";
-import { set } from "react-hook-form";
+import useGetSocketMessage from "../../context/useGetSocketMessage.jsx";
+
 
 const Messages = () => {
   const {loading, messages}=useGetMessage();
+  useGetSocketMessage();
   console.log(messages);
 
   const lastMsgRef = useRef();
 useEffect(()=>{
   setTimeout(() => {
-    lastMsgRef.current?.scrollIntoView({ behavior: "smooth" });
+    if(lastMsgRef.current)
+    lastMsgRef.current.scrollIntoView({ behavior: "smooth" });
   }, 100);
 },[messages])
 
@@ -21,7 +24,10 @@ useEffect(()=>{
     <div className="no-scrollbar overflow-y-auto" style={{minHeight:"calc(92vh - 8vh)"}}>
 
       {loading?(<Loading/>):(messages.length>0 && messages.map((message)=>(
-        <Message key = {message._id} message={message}/>
+        <div key = {message.id} ref={lastMsgRef}>
+           <Message  message={message}/>
+        </div>
+       
       )))}
 
 
