@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: "https://chats-app-dmzj.vercel.app", // Your frontend URL
+    origin: ["https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"], // Allow both frontend URLs
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
