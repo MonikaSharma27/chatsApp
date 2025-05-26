@@ -9,31 +9,28 @@ import { app, server } from "./SocketIO/server.js";
 
 dotenv.config();
 
+// Debug middleware to log requests
+app.use((req, res, next) => {
+    console.log('Incoming request:', {
+        method: req.method,
+        path: req.path,
+        origin: req.headers.origin,
+        headers: req.headers
+    });
+    next();
+});
+
 app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: function(origin, callback) {
-        const allowedOrigins = [
-            'http://localhost:5173',
-            'https://chats-app-dmzj.vercel.app',
-            'http://chats-app-dmzj.vercel.app',
-            'https://chats-app-sand.vercel.app',
-            'http://chats-app-sand.vercel.app'
-        ];
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    },
+    origin: true, // Allow all origins
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
     exposedHeaders: ["Set-Cookie"],
+    maxAge: 86400 // Cache preflight requests for 24 hours
 }));
 
 const PORT = process.env.PORT || 3001;
