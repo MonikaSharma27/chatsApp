@@ -4,11 +4,11 @@ import express from "express";
 
 
 const app = express();
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin: "https://chats-app-dmzj.vercel.app",
+        origin: API_BASE_URL,
         methods: ["GET", "POST"],
     }
 })

@@ -17,11 +17,12 @@ export const SocketProvider = ({children})=>{
     const [socket , setSocket] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState([])
     const [authUser] = useAuth()
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
     useEffect (()=>{
       if(authUser){
-        const socket = io("https://chats-app-dmzj.vercel.app/",{
+        const socket = io(API_BASE_URL,{
              query:{
             userId : authUser.user.id
         }})
