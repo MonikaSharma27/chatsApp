@@ -49,7 +49,7 @@ const Login = () => {
              className="border border-white px-6 py-2 rounded-md space-y-4 w-96"
            >
              <h1 className="text-3xl text-center">
-               Chat<span className="text-green-500 font-semibold">App</span>{" "}
+               Chat<span className="text-green-500 font-semibold">Apppp</span>{" "}
              </h1>
              <h2 className="text-2xl font-bold">Login</h2>
    
