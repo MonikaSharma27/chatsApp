@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({
-    origin: ["http://localhost:5173", "https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
+    origin: ["http://localhost:5173", "http://chats-app-dmzj.vercel.app", "http://chats-app-sand.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
@@ -15,7 +15,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin: ["http://localhost:5173", "https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
+        origin: ["http://localhost:5173", "http://chats-app-dmzj.vercel.app", "http://chats-app-sand.vercel.app"],
         methods: ["GET", "POST", "OPTIONS"],
         credentials: true,
         allowedHeaders: ["Content-Type", "Authorization"]

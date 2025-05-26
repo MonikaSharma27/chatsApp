@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: ["https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
+    origin: ["http://chats-app-dmzj.vercel.app", "http://chats-app-sand.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
