@@ -2,16 +2,15 @@ import {Server} from "socket.io";
 import http from "http";
 import express from "express";
 
-
 const app = express();
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin: API_BASE_URL,
+        origin: ["https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
         methods: ["GET", "POST"],
+        credentials: true
     }
-})
+});
 
 export const getReceiverSocketId = (receiverId)=>{
     return users[receiverId];
@@ -24,7 +23,7 @@ io.on("connection", (socket) => {
     const userId = socket.handshake.query.userId;
     if(userId){
         users[userId] = socket.id;
-        console.log( users);
+        console.log(users);
     }
     io.emit("getOnlineUsers", Object.keys(users));
 
@@ -33,6 +32,6 @@ io.on("connection", (socket) => {
         delete users[userId];
         io.emit("getOnlineUsers", Object.keys(users));
     });
-})
+});
 
-export {app ,io, server};
+export {app, io, server};

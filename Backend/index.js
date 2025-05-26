@@ -8,14 +8,13 @@ import messageRoute from "./routes/message.route.js";
 import { app, server } from "./SocketIO/server.js";
 
 dotenv.config();
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 app.use(express.json());
 app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: API_BASE_URL,
+    origin: ["https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
