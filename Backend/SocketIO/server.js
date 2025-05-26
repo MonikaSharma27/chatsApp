@@ -8,7 +8,8 @@ app.use(cors({
     origin: ["http://localhost:5173", "http://chats-app-dmzj.vercel.app", "http://chats-app-sand.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
+
 }));
 app.use(express.json());
 
