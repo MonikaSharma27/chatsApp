@@ -14,7 +14,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin: ["https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
+        origin: ["http://localhost:5173", "https://chats-app-dmzj.vercel.app", "https://chats-app-sand.vercel.app"],
         methods: ["GET", "POST"],
         credentials: true
     }
