@@ -25,12 +25,10 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: "http://localhost:5173", // Your frontend URL
-    credentials: true,
+    origin: ["http://localhost:5173", "https://chats-app-dmzj.vercel.app"], // Your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
     exposedHeaders: ["Set-Cookie"],
-    maxAge: 86400 // Cache preflight requests for 24 hours
 }));
 
 const PORT = process.env.PORT || 3001;
